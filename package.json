@@ -1,0 +1,23 @@
+{
+  "name": "on-the-other-side-of-the-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "author": "Mikhail Garbuzov",
+  "license": "MIT",
+  "scripts": {
+    "pdf": "shower pdf",
+    "serve": "shower serve",
+    "archive": "shower archive",
+    "bundle": "shower bundle",
+    "publish": "shower publish"
+  },
+  "dependencies": {
+    "@shower/cli": "^0.3.1",
+    "@shower/core": "^3.3.0",
+    "@shower/ribbon": "^3.5.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5"
+  }
+}

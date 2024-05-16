@@ -25,12 +25,22 @@
     </section>
 
     <section class="slide">
-      <h2>Intro</h2>
+      <p>Intro</p>
+      <h3 style="font-size: 2em; margin-block-end: 0px">Михаил Гарбузов</h3>
       <ol>
         <li>Software Engineer at JettyCloud</li>
-        <li>MoscowJS Co-Organizer ¿[XZS-A2Q]?</li>
+        <li>
+          MoscowJS Co-Organizer
+          <code class="comment" style="color: rgba(128, 128, 128, 0.4); background-color: initial">
+            Q9S-X29
+          </code>
+        </li>
         <li>More than 10 Y expirience with JS dev</li>
       </ol>
+    </section>
+
+    <section class="slide">
+      <h2 class="shout">Мотивация</h2>
     </section>
 
     <section class="slide">
@@ -38,10 +48,6 @@
       <!-- TODO: зал из эмоджи слушателей -->
       <!-- <h2 class="shout grow">🙋‍♀️&nbsp;🙋‍♂️</h2> -->
       <!-- <h2 class="shout grow">🙋‍♀️&nbsp;🙋‍♂️</h2> -->
-    </section>
-
-    <section class="slide">
-      <h2 class="shout">Мотивация</h2>
     </section>
 
     <section class="slide">
@@ -94,7 +100,7 @@
       </ol>
     </section>
 
-    <section class="slide clear">
+    <section class="slide">
       <p style="color: brown">500</p>
       <p class="note">Internal Server Error</p>
     </section>
@@ -144,26 +150,27 @@
     </section>
 
     <section class="slide">
+      <h2>BE - это скучно</h2>
+      <ol>
+        <li class="next">перекладываем JSON`ы</li>
+        <li class="next">копипастип 100500 CRUD</li>
+        <li class="next">... ?</li>
+        <li class="next">PROFIT</li>
+      </ol>
+    </section>
+
+    <section class="slide">
       <h2>FE - это скучно</h2>
       <ol>
         <li class="next">шлепаем формы</li>
         <li class="next">красим/двигаем кнопки</li>
         <li class="next">выбираем стейт менеджмент</li>
-        <li class="next">страдаем при написании редьюсерров для Redux</li>
+        <li class="next">страдаем при написании редьюсеров для Redux</li>
       </ol>
     </section>
 
     <section class="slide">
-      <h2>BE - это скучно</h2>
-      <ol>
-        <li class="next">перекладываем жсоны</li>
-        <li class="next">шлепаем 100500-тый круд</li>
-        <li class="next">... ?</li>
-      </ol>
-    </section>
-
-    <section class="slide">
-      <h2>&lt;Placeholder&gt; - это скучно</h2>
+      <h2>{{ Placeholder }} - это скучно</h2>
       <ol>
         <li>[QA] ничего не делают</li>
         <li>[DevOps] yaml developer</li>
@@ -178,7 +185,12 @@
       class="slide clear"
       style="
         background-color: #0b71b1;
-        background: linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+        background: linear-gradient(
+          0deg,
+          rgba(2, 0, 36, 1) 0%,
+          rgba(9, 9, 121, 1) 35%,
+          rgba(0, 212, 255, 1) 100%
+        );
       "
     >
       <img class="cover h" src="assets/images/iceberg.jpeg" />
@@ -204,6 +216,7 @@
         </li>
         <li class="next">Jest</li>
         <li class="next">Express</li>
+        <li class="next">npm</li>
       </ol>
     </section>
 
@@ -256,6 +269,11 @@
     </section>
 
     <section class="slide">
+      <h2>Пишем какую-то бизнес логику</h2>
+      <p>Которая закрывает вашу задачу</p>
+    </section>
+
+    <section class="slide">
       <h2>Docker</h2>
       <pre>
         <code>FROM node as Builder
@@ -279,14 +297,20 @@ COPY --from=Builder /opt/app /opt/app
       <h2>Probes</h2>
       <p>Liveness / Readiness / Startup</p>
       <p>docker https://docs.docker.com/compose/compose-file/05-services/#healthcheck</p>
-      <p>k8s https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/</p>
+      <p>
+        k8s
+        https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+      </p>
     </section>
 
     <section class="slide">
       <h2>Probes</h2>
       <p>Liveness / Readiness / Startup</p>
       <p>docker https://docs.docker.com/compose/compose-file/05-services/#healthcheck</p>
-      <p>k8s https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/</p>
+      <p>
+        k8s
+        https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+      </p>
     </section>
 
     <section class="slide">

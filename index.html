@@ -10,7 +10,15 @@
         --slide-ratio: calc(16 / 9);
       }
       .slide pre {
-        font-size: 20px;
+        font-size: 18px;
+      }
+      .slide pre code.add {
+        background-color: rgba(0, 128, 0, 0.1);
+        color: green;
+      }
+      .slide pre code.del {
+        background-color: rgba(255, 0, 0, 0.1);
+        color: red;
       }
     </style>
   </head>
@@ -21,7 +29,7 @@
     </header>
 
     <section class="slide">
-      <h2 class="shout">По ту сторону фронтенда</h2>
+      <h2 class="shout" style="font-size: 3em">По ту сторону фронтенда</h2>
     </section>
 
     <section class="slide">
@@ -234,21 +242,21 @@
       <h2>Старт проекта</h2>
       <pre>
         <code>npm init --yes</code>
-        <code>npm install -D \</code>
-          <code>  eslint prettier husky lint-staged \</code>
-          <code>  [jest] \</code>
-          <code>  # ... \</code>
-          <code>  typescript \</code>
-          <code>  @types/node \</code>
-          <code>  @tsconfig/node20 \</code>
-          <code>  @tsconfig/strictest \</code>
+        <code>npm install express {lodash,ramda,fp-ts}</code>
       </pre>
     </section>
 
     <section class="slide">
-      <h2>Старт проекта</h2>
+      <h2>Dev зависимости</h2>
       <pre>
-        <code>npm install express {lodash,ramda,fp-ts}</code>
+        <code>npm install -D \</code>
+        <code>  eslint prettier husky lint-staged \</code>
+        <code>  jest \</code>
+        <code>  </code>
+        <code>  typescript \</code>
+        <code>  @types/node \</code>
+        <code>  @tsconfig/node20 \</code>
+        <code>  @tsconfig/strictest \</code>
       </pre>
     </section>
 
@@ -261,10 +269,17 @@
     <section class="slide">
       <h2>Hello world</h2>
       <pre>
-        <code class="comment">// TODO:</code>
-        <code>require('express')()</code>
-        <code>  .get('/', ...)</code>
-        <code>  .listen(PORT)</code>
+        <code>import express from 'express';</code>
+        <code>import { config } from './config';</code>
+        <code>import { routes } from './routes';</code>
+        <code></code>
+        <code>const app = express();</code>
+        <code>app.use(routes());</code>
+        <code></code>
+        <code>app.get('/', (req, res) => res.send('Hello, World!'));</code>
+        <code>app.listen(config.server.port, () => {</code>
+        <code>  console.log(`Server is running on port ${config.server.port}`);</code>
+        <code>});</code>
       </pre>
     </section>
 
@@ -276,16 +291,58 @@
     <section class="slide">
       <h2>Docker</h2>
       <pre>
-        <code>FROM node as Builder
-WORKDIR /opt/app
-RUN npm ci && npm run build
-- FROM nginx as Runner
-+ FROM Builder as Runner
-COPY --from=Builder /opt/app /opt/app
-- EXPOSE 80
-+ EXPOSE 3000
--CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
-+CMD ["node", "dist/index.js"]</code>
+        <code>  FROM node as builder</code>
+        <code>  WORKDIR /opt/app</code>
+        <code>  RUN npm ci && npm run build</code>
+        <code>  FROM nginx as runner</code>
+        <code>  COPY --from=builder /opt/app /opt/app</code>
+        <code>  EXPOSE 80</code>
+        <code>  CMD ["/usr/sbin/nginx", "-g", "daemon off;"]</code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Docker</h2>
+      <pre>
+        <code>  FROM node as builder</code>
+        <code>  WORKDIR /opt/app</code>
+        <code>  RUN npm ci && npm run build</code>
+        <code class="del">- FROM nginx as runner</code>
+        <code class="add">+ FROM builder as runner</code>
+        <code>  COPY --from=builder /opt/app /opt/app</code>
+        <code>  EXPOSE 80</code>
+        <code>  CMD ["/usr/sbin/nginx", "-g", "daemon off;"]</code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Docker</h2>
+      <pre>
+        <code>  FROM node as builder</code>
+        <code>  WORKDIR /opt/app</code>
+        <code>  RUN npm ci && npm run build</code>
+        <code class="del">- FROM nginx as runner</code>
+        <code class="add">+ FROM builder as runner</code>
+        <code>  COPY --from=builder /opt/app /opt/app</code>
+        <code class="del">- EXPOSE 80</code>
+        <code class="add">+ EXPOSE 3000</code>
+        <code>  CMD ["/usr/sbin/nginx", "-g", "daemon off;"]</code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2>Docker</h2>
+      <pre>
+        <code>  FROM node as builder</code>
+        <code>  WORKDIR /opt/app</code>
+        <code>  RUN npm ci && npm run build</code>
+        <code class="del">- FROM nginx as runner</code>
+        <code class="add">+ FROM builder as runner</code>
+        <code>  COPY --from=builder /opt/app /opt/app</code>
+        <code class="del">- EXPOSE 80</code>
+        <code class="add">+ EXPOSE 3000</code>
+        <code class="del">- CMD ["/usr/sbin/nginx", "-g", "daemon off;"]</code>
+        <code class="add">+ CMD ["node", "dist/index.js"]</code>
       </pre>
     </section>
 
@@ -296,64 +353,125 @@ COPY --from=Builder /opt/app /opt/app
     <section class="slide">
       <h2>Probes</h2>
       <p>Liveness / Readiness / Startup</p>
-      <p>docker https://docs.docker.com/compose/compose-file/05-services/#healthcheck</p>
       <p>
-        k8s
-        https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+        Docker
+        <br />
+        <span>
+          <a
+            target="_blank"
+            href="https://docs.docker.com/compose/compose-file/05-services/#healthcheck"
+            >https://docs.docker.com/compose/compose-file/05-services/#healthcheck</a
+          >
+        </span>
       </p>
-    </section>
 
-    <section class="slide">
-      <h2>Probes</h2>
-      <p>Liveness / Readiness / Startup</p>
-      <p>docker https://docs.docker.com/compose/compose-file/05-services/#healthcheck</p>
       <p>
         k8s
-        https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+        <br />
+        <a
+          target="_blank"
+          href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/"
+          >https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/</a
+        >
       </p>
     </section>
 
     <section class="slide">
       <h2>Logs</h2>
-      <p>ELK</p>
-      <p>log level</p>
+      <ul>
+        <li>ELK</li>
+        <li>Splunk</li>
+        <li>Datadog</li>
+      </ul>
+    </section>
+
+    <section class="slide clear">
+      <img class="cover h" src="assets/images/kibana.jpg" />
     </section>
 
     <section class="slide">
       <h2>Metrics</h2>
-      <p>prom</p>
-      <p>grafana</p>
+      <ul>
+        <li>Prometheus</li>
+        <li>VictoriaMetrics</li>
+        <li>Grafana</li>
+      </ul>
+    </section>
+
+    <section class="slide clear">
+      <img class="cover h" src="assets/images/grafana.png" />
+    </section>
+
+    <section class="slide clear">
+      <img class="cover h" src="assets/images/v-metrics-gauge.jpg" />
     </section>
 
     <section class="slide">
       <h2>Traces</h2>
-      <p>jaeger ...</p>
-      <p>traces size</p>
+      <ul>
+        <li>Dynatrace</li>
+        <li>Jaeger</li>
+        <li>Zipkin</li>
+        <li>OpenTelemetry</li>
+      </ul>
     </section>
 
-    <section class="slide">
-      <h2>Observability</h2>
+    <section class="slide clear">
+      <img class="cover h" src="assets/images/jaeger-search.jpg" />
+    </section>
+
+    <section class="slide clear">
+      <img class="cover h" src="assets/images/jaeger-search-id.jpg" />
+    </section>
+
+    <section class="slide clear">
+      <img class="cover h" src="assets/images/jaeger-dag.jpg" />
+    </section>
+
+    <section class="slide clear">
+      <img class="cover h" src="assets/images/jaeger-fdg.jpg" />
+    </section>
+
+    <section class="slide clear">
+      <img class="cover h" src="assets/images/jaeger-monitor.jpg" />
     </section>
 
     <section class="slide">
       <h2>Alerting</h2>
+      <ul>
+        <li>Opsgenie</li>
+        <li>PagerDuty</li>
+        <li>Grafana OnCall</li>
+      </ul>
     </section>
 
     <section class="slide">
       <h2>Framework</h2>
+      <ul>
+        <li>ExpressJS</li>
+        <li>Koa</li>
+        <li>NestJS</li>
+        <li>NextJS</li>
+      </ul>
     </section>
 
-    <section class="slide">
+    <!-- <section class="slide">
       <h2>ORM / ODM</h2>
-    </section>
+    </section> -->
 
     <section class="slide">
       <h2>Migration</h2>
+      <ul>
+        <li>Opt in ORM</li>
+        <li>Plain SQL</li>
+        <li>JS scripts for MongoDB</li>
+        <li>scripts</li>
+      </ul>
     </section>
 
-    <section class="slide">
+    <!-- <section class="slide">
       <h2>Versioning</h2>
-    </section>
+    </section> -->
 
     <section
       class="slide clear"

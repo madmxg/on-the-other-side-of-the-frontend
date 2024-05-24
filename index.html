@@ -122,11 +122,11 @@
     </section>
 
     <section class="slide">
-      <h2>Я и так умею писать backend</h2>
+      <h2 class="shout" style="font-size: 2em">Я и так умею писать backend</h2>
     </section>
 
     <section class="slide">
-      <pre>
+      <pre class="place">
         <code>const express = require('express')</code>
         <code>const app = express()</code>
         <code>const port = 3000</code>
@@ -140,7 +140,7 @@
     </section>
 
     <section class="slide">
-      <pre>
+      <pre class="place">
         <code>'use server'</code>
         <code>    </code>
         <code>export async function greeting(subject: string) {</code>
@@ -205,7 +205,7 @@
     </section>
 
     <section class="slide">
-      <h2 class="shout">OK, с чего начать?</h2>
+      <h2 class="shout" style="font-size: 2em">OK, с чего начать?</h2>
     </section>
 
     <section class="slide">
@@ -239,16 +239,22 @@
     </section>
 
     <section class="slide">
-      <h2>Старт проекта</h2>
-      <pre>
+      <h2 class="shout" style="font-size: 2em">Старт проекта</h2>
+    </section>
+
+    <section class="slide">
+      <pre class="place">
         <code>npm init --yes</code>
         <code>npm install express {lodash,ramda,fp-ts}</code>
       </pre>
     </section>
 
     <section class="slide">
-      <h2>Dev зависимости</h2>
-      <pre>
+      <h2 class="shout" style="font-size: 2em">Dev зависимости</h2>
+    </section>
+
+    <section class="slide">
+      <pre class="place">
         <code>npm install -D \</code>
         <code>  eslint prettier husky lint-staged \</code>
         <code>  jest \</code>
@@ -267,15 +273,18 @@
     </section>
 
     <section class="slide">
-      <h2>Hello world</h2>
-      <pre>
+      <h2 class="shout" style="font-size: 2em">Пишем наше бекенд приложение</h2>
+    </section>
+
+    <section class="slide">
+      <pre class="place">
         <code>import express from 'express';</code>
         <code>import { config } from './config';</code>
         <code>import { routes } from './routes';</code>
-        <code></code>
+        <code>  </code>
         <code>const app = express();</code>
         <code>app.use(routes());</code>
-        <code></code>
+        <code>  </code>
         <code>app.get('/', (req, res) => res.send('Hello, World!'));</code>
         <code>app.listen(config.server.port, () => {</code>
         <code>  console.log(`Server is running on port ${config.server.port}`);</code>
@@ -289,8 +298,21 @@
     </section>
 
     <section class="slide">
-      <h2>Docker</h2>
-      <pre>
+      <h2 class="shout" style="font-size: 2em">Контейнеризация</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Контейнеризация (и оркестрация)</h2>
+      <ul>
+        <li>Docker</li>
+        <li>Podman</li>
+        <li></li>
+        <li>k8s</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <pre class="place">
         <code>  FROM node as builder</code>
         <code>  WORKDIR /opt/app</code>
         <code>  RUN npm ci && npm run build</code>
@@ -302,8 +324,7 @@
     </section>
 
     <section class="slide">
-      <h2>Docker</h2>
-      <pre>
+      <pre class="place">
         <code>  FROM node as builder</code>
         <code>  WORKDIR /opt/app</code>
         <code>  RUN npm ci && npm run build</code>
@@ -316,8 +337,7 @@
     </section>
 
     <section class="slide">
-      <h2>Docker</h2>
-      <pre>
+      <pre class="place">
         <code>  FROM node as builder</code>
         <code>  WORKDIR /opt/app</code>
         <code>  RUN npm ci && npm run build</code>
@@ -331,8 +351,7 @@
     </section>
 
     <section class="slide">
-      <h2>Docker</h2>
-      <pre>
+      <pre class="place">
         <code>  FROM node as builder</code>
         <code>  WORKDIR /opt/app</code>
         <code>  RUN npm ci && npm run build</code>
@@ -347,11 +366,14 @@
     </section>
 
     <section class="slide">
-      <h2>Production?</h2>
+      <h2 class="shout" style="font-size: 2em">Production?</h2>
     </section>
 
     <section class="slide">
-      <h2>Probes</h2>
+      <h2 class="shout" style="font-size: 2em">Probes</h2>
+    </section>
+
+    <section class="slide">
       <p>Liveness / Readiness / Startup</p>
       <p>
         Docker
@@ -377,12 +399,58 @@
     </section>
 
     <section class="slide">
-      <h2>Logs</h2>
-      <ul>
+      <pre class="place">
+        <code>import express from 'express';</code>
+        <code>  </code>
+        <code>function probes(): Router {</code>
+        <code>  const router = Router();</code>
+        <code>  </code>
+        <code>  router.get('/healthz', (_req, res): void => {</code>
+        <code>    res.status(200).json({ msg: 'ok' });</code>
+        <code>  });</code>
+        <code>  </code>
+        <code>  router.get('/readiness', (_req, res): void => {</code>
+        <code>    res.status(200).json({ msg: 'ok' });</code>
+        <code>  });</code>
+        <code>  return router;</code>
+        <code>}</code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <h2 class="shout" style="font-size: 2em">Logs</h2>
+    </section>
+
+    <section class="slide">
+      <ul class="place">
         <li>ELK</li>
         <li>Splunk</li>
         <li>Datadog</li>
       </ul>
+    </section>
+
+    <section class="slide">
+      <pre class="place">
+        <code>npm install winston</code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <pre class="place">
+        <code>import winston from 'winston';</code>
+        <code>import { config } from './config';</code>
+        <code>  </code>
+        <code>const { levels, colors } = winston.config.npm;</code>
+        <code>winston.addColors(colors);</code>
+        <code>  </code>
+        <code>export const logger = winston.createLogger({</code>
+        <code>  levels,</code>
+        <code>  level: config.server.logLevel,</code>
+        <code>  format: winston.format.combine(winston.format.timestamp(), winston.format.json()),</code>
+        <code>  defaultMeta: { service: 'app-backend' },</code>
+        <code>  transports: [new winston.transports.Console()],</code>
+        <code>});</code>
+      </pre>
     </section>
 
     <section class="slide clear">
@@ -390,16 +458,63 @@
     </section>
 
     <section class="slide">
-      <h2>Metrics</h2>
-      <ul>
+      <h2 class="shout" style="font-size: 2em">Metrics</h2>
+    </section>
+
+    <section class="slide">
+      <ul class="place">
         <li>Prometheus</li>
         <li>VictoriaMetrics</li>
         <li>Grafana</li>
       </ul>
     </section>
 
+    <section class="slide">
+      <pre class="place">
+        <code>npm install express-prom-bundle prom-client</code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <pre class="place">
+        <code>import winston from 'winston';</code>
+        <code>import promBundle from 'express-prom-bundle';</code>
+        <code>import { collectDefaultMetrics } from 'prom-client';</code>
+        <code>  </code>
+        <code>...</code>
+        <code>  </code>
+        <code>const metricsMiddleware = promBundle({ includeMethod: true });</code>
+        <code>collectDefaultMetrics();</code>
+        <code>  </code>
+        <code>app.use(metricsMiddleware);</code>
+        <code>  </code>
+        <code>...</code>
+      </pre>
+    </section>
+
     <section class="slide clear">
       <img class="cover h" src="assets/images/grafana.png" />
+    </section>
+
+    <section class="slide">
+      <pre class="place">
+        <code>import { Gauge } from 'prom-client';</code>
+        <code>  </code>
+        <code>const statusGauge = new Gauge({ name: 'tjs_app_hits_counter' });</code>
+        <code>  </code>
+        <code>function counter(): Router {</code>
+        <code>  const router = Router();</code>
+        <code>  router.get('/increment', (_req, res): void => {</code>
+        <code>    statusGauge.inc();</code>
+        <code>    res.status(200).send();</code>
+        <code>  });</code>
+        <code>  router.get('/decrement', (_req, res): void => {</code>
+        <code>    statusGauge.dec();</code>
+        <code>    res.status(200).send();</code>
+        <code>  });</code>
+        <code>  return router;</code>
+        <code>}</code>
+      </pre>
     </section>
 
     <section class="slide clear">
@@ -407,13 +522,34 @@
     </section>
 
     <section class="slide">
-      <h2>Traces</h2>
-      <ul>
+      <h2 class="shout" style="font-size: 2em">Traces</h2>
+    </section>
+
+    <section class="slide">
+      <ul class="place">
         <li>Dynatrace</li>
         <li>Jaeger</li>
         <li>Zipkin</li>
         <li>OpenTelemetry</li>
       </ul>
+    </section>
+
+    <section class="slide">
+      <pre class="place">
+        <code>npm install @opentelemetry/api @opentelemetry/sdk-node \</code>
+        <code>  @opentelemetry/auto-instrumentations-node \</code>
+        <code>  @opentelemetry/exporter-trace-otlp-grpc \</code>
+        <code>  @opentelemetry/sdk-trace-node \</code>
+        <code>  @opentelemetry/sdk-metrics</code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <pre class="place">
+        <code>import { NodeSDK } from '@opentelemetry/sdk-node';</code>
+        <code>...</code>
+        <code>// WIP</code>
+      </pre>
     </section>
 
     <section class="slide clear">
@@ -452,12 +588,16 @@
         <li>Koa</li>
         <li>NestJS</li>
         <li>NextJS</li>
+        <li>TODO: картинка со стейт оф ЖС</li>
       </ul>
     </section>
 
-    <!-- <section class="slide">
-      <h2>ORM / ODM</h2>
-    </section> -->
+    <section class="slide">
+      <h2 class="shout" style="font-size: 2em">Работа с данными</h2>
+      <p>ORM</p>
+      <p>ODM</p>
+      <p>...</p>
+    </section>
 
     <section class="slide">
       <h2>Migration</h2>
@@ -469,9 +609,9 @@
       </ul>
     </section>
 
-    <!-- <section class="slide">
+    <section class="slide">
       <h2>Versioning</h2>
-    </section> -->
+    </section>
 
     <section
       class="slide clear"

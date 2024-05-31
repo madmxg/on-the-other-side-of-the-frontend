@@ -5,22 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="node_modules/@shower/ribbon/styles/styles.css" />
-    <style>
-      .shower {
-        --slide-ratio: calc(16 / 9);
-      }
-      .slide pre {
-        font-size: 18px;
-      }
-      .slide pre code.add {
-        background-color: rgba(0, 128, 0, 0.1);
-        color: green;
-      }
-      .slide pre code.del {
-        background-color: rgba(255, 0, 0, 0.1);
-        color: red;
-      }
-    </style>
+    <link rel="stylesheet" href="node_modules/highlight.js/styles/github.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body class="shower list">
     <header class="caption">
@@ -35,6 +21,7 @@
     <section class="slide">
       <p>Intro</p>
       <h3 style="font-size: 2em; margin-block-end: 0px">Михаил Гарбузов</h3>
+      <span>Picture</span>
       <ol>
         <li>Software Engineer at JettyCloud</li>
         <li>
@@ -48,10 +35,6 @@
     </section>
 
     <section class="slide">
-      <h2 class="shout">Мотивация</h2>
-    </section>
-
-    <section class="slide">
       <h2 class="shout grow">🙋‍♀️&nbsp;🙋‍♂️</h2>
       <!-- TODO: зал из эмоджи слушателей -->
       <!-- <h2 class="shout grow">🙋‍♀️&nbsp;🙋‍♂️</h2> -->
@@ -59,58 +42,97 @@
     </section>
 
     <section class="slide">
-      <h2>Как обычно вы видите бекэнд</h2>
+      <h2 class="shout shout-e">Мотивация</h2>
     </section>
 
     <section class="slide">
-      <h2>Как обычно вы видите бекэнд</h2>
+      <h2 class="">Community</h2>
       <ol>
-        <li>GraphQL</li>
+        <li>Ивенты</li>
+        <li class="next">Доклады</li>
+        <li class="next">NodeJS</li>
       </ol>
     </section>
 
+    <section class="slide">
+      <h2 class="">Развитие</h2>
+      <ol>
+        <li>Lead</li>
+        <li class="next">Fullstack</li>
+        <li class="next">Backend</li>
+        <li class="next">Software Engineer</li>
+      </ol>
+    </section>
+
+    <section class="slide">
+      <h2 class="shout shout-e">Я и так умею писать backend</h2>
+    </section>
+
+    <section class="slide">
+      <pre class="place typescript">
+        <code>const express = require('express')
+const app = express()
+
+const port = 3000
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+      </code>
+      </pre>
+    </section>
+
+    <!-- <section class="slide">
+      <pre class="place typescript">
+        <code>'use server'
+
+export async function greeting(subject: string) {
+  try {
+    return `Hello ${subject}`
+  } catch (error) {
+    throw new Error('Failed to greeting')
+  }
+}
+        </code>
+      </pre>
+    </section> -->
+
     <section class="slide clear">
+      <img class="cover h" src="assets/images/use-server.jpg" />
+    </section>
+
+    <section class="slide clear">
+      <img class="cover h" src="assets/images/mjs-58-nextjs.jpg" />
+    </section>
+
+    <section class="slide">
+      <h2 class="">О чем доклад</h2>
+      <ol>
+        <li class="next">Упакуем ваше приложение</li>
+        <li class="next">Добавим инструментарий</li>
+        <li class="next">Подводные камни</li>
+      </ol>
+    </section>
+
+    <section class="slide">
+      <h2 class="shout shout-e">Как обычно вы видите бекэнд</h2>
+    </section>
+
+    <section class="slide clear">
+      <h3>GraphQL</h3>
       <img class="cover h" src="assets/images/graphql.jpg" />
     </section>
 
-    <section class="slide">
-      <h2>Как обычно вы видите бекэнд</h2>
-      <ol>
-        <li>GraphQL</li>
-        <li>OpenAPI / Swagger</li>
-      </ol>
-    </section>
-
     <section class="slide clear">
+      <h3>OpenAPI | Swagger</h3>
       <img class="cover h" src="assets/images/swagger.jpg" />
     </section>
 
-    <section class="slide">
-      <h2>Как обычно вы видите бекэнд</h2>
-      <ol>
-        <li>GraphQL</li>
-        <li>OpenAPI / Swagger</li>
-        <li>SOAP</li>
-      </ol>
-    </section>
-
     <section class="slide clear">
+      <h3>SOAP</h3>
       <img class="cover h" src="assets/images/soap.jpg" />
-    </section>
-
-    <section class="slide">
-      <h2>Как обычно вы видите бекэнд</h2>
-      <ol>
-        <li>GraphQL</li>
-        <li>OpenAPI / Swagger</li>
-        <li>SOAP</li>
-        <li>...</li>
-      </ol>
-    </section>
-
-    <section class="slide">
-      <p style="color: brown">500</p>
-      <p class="note">Internal Server Error</p>
     </section>
 
     <section class="slide clear">
@@ -122,42 +144,11 @@
     </section>
 
     <section class="slide">
-      <h2 class="shout" style="font-size: 2em">Я и так умею писать backend</h2>
+      <p style="color: brown; font-size: 1.5em">500</p>
+      <p class="note" style="font-size: 1.5em">Internal Server Error</p>
     </section>
 
-    <section class="slide">
-      <pre class="place">
-        <code>const express = require('express')</code>
-        <code>const app = express()</code>
-        <code>const port = 3000</code>
-        <code>app.get('/', (req, res) => {</code>
-        <code>  res.send('Hello World!')</code>
-        <code>})</code>
-        <code>app.listen(port, () => {</code>
-        <code>  console.log(`Example app listening on port ${port}`)</code>
-        <code>})</code>
-      </pre>
-    </section>
-
-    <section class="slide">
-      <pre class="place">
-        <code>'use server'</code>
-        <code>    </code>
-        <code>export async function greeting(subject: string) {</code>
-        <code>  try {</code>
-        <code>    return `Hello ${subject}`</code>
-        <code>  } catch (error) {</code>
-        <code>    throw new Error('Failed to greeting')</code>
-        <code>  }</code>
-        <code>}</code>
-      </pre>
-    </section>
-
-    <section class="slide clear">
-      <img class="cover h" src="assets/images/next-use-server.jpeg" />
-    </section>
-
-    <section class="slide">
+    <!-- <section class="slide">
       <h2>BE - это скучно</h2>
       <ol>
         <li class="next">перекладываем JSON`ы</li>
@@ -183,13 +174,15 @@
         <li>[QA] ничего не делают</li>
         <li>[DevOps] yaml developer</li>
       </ol>
-    </section>
+    </section> -->
 
     <section class="slide">
-      <h2 class="shout">Iceberg</h2>
+      <h2>As Crônicas de Wesley</h2>
+      <p>IMG // TODO: find original picture</p>
+      <p></p>
     </section>
 
-    <section
+    <!-- <section
       class="slide clear"
       style="
         background-color: #0b71b1;
@@ -202,15 +195,24 @@
       "
     >
       <img class="cover h" src="assets/images/iceberg.jpeg" />
+    </section> -->
+
+    <section class="slide clear">
+      <img class="cover w" src="assets/images/cronicas/02-lets.jpeg" />
     </section>
 
     <section class="slide">
-      <h2 class="shout" style="font-size: 2em">OK, с чего начать?</h2>
+      <h2>или напишем приложение</h2>
+      <p>https://nodejs.org/docs</p>
+      <p>https://expressjs.com</p>
     </section>
 
     <section class="slide">
       <h2>Requirements</h2>
       <ol>
+        <li class="next">npm</li>
+        <li class="next">Express</li>
+        <li class="next">Jest</li>
         <li class="next">Javascript</li>
       </ol>
     </section>
@@ -218,17 +220,17 @@
     <section class="slide">
       <h2>Requirements</h2>
       <ol>
+        <li>npm</li>
+        <li>Express</li>
+        <li>Jest</li>
         <li>
           <del>Javascript</del>
           Typescript
         </li>
-        <li class="next">Jest</li>
-        <li class="next">Express</li>
-        <li class="next">npm</li>
       </ol>
     </section>
 
-    <section
+    <!-- <section
       class="slide clear"
       style="
         background: rgb(172, 35, 51);
@@ -236,73 +238,83 @@
       "
     >
       <img class="cover h" src="assets/images/thats-all-folks.svg" />
+    </section> -->
+
+    <section class="slide neck-bg1">
+      <h2 class="shout shout-e" style="font-size: 2em">Старт проекта</h2>
     </section>
 
     <section class="slide">
-      <h2 class="shout" style="font-size: 2em">Старт проекта</h2>
-    </section>
-
-    <section class="slide">
-      <pre class="place">
+      <pre class="place bash">
         <code>npm init --yes</code>
         <code>npm install express {lodash,ramda,fp-ts}</code>
       </pre>
     </section>
 
-    <section class="slide">
-      <h2 class="shout" style="font-size: 2em">Dev зависимости</h2>
+    <section class="slide neck-bg1">
+      <h2 class="shout shout-e">Dev зависимости</h2>
     </section>
 
     <section class="slide">
-      <pre class="place">
-        <code>npm install -D \</code>
-        <code>  eslint prettier husky lint-staged \</code>
-        <code>  jest \</code>
-        <code>  </code>
-        <code>  typescript \</code>
-        <code>  @types/node \</code>
-        <code>  @tsconfig/node20 \</code>
-        <code>  @tsconfig/strictest \</code>
+      <pre class="place bash">
+        <code>npm install --save-dev \
+  eslint prettier husky lint-staged \
+  jest \
+  typescript \
+  @types/node \
+  @tsconfig/node20
+      </code>
       </pre>
     </section>
 
-    <section class="slide">
-      <h2>Изучаем документацию</h2>
-      <p>https://nodejs.org/docs</p>
-      <p>https://expressjs.com</p>
+    <section class="slide neck-bg1">
+      <h2 class="shout shout-e">Framework</h2>
     </section>
 
     <section class="slide">
-      <h2 class="shout" style="font-size: 2em">Пишем наше бекенд приложение</h2>
+      <h2>Framework</h2>
+      <ul>
+        <li>ExpressJS</li>
+        <li>Koa</li>
+        <li>NestJS</li>
+        <li>NextJS</li>
+        <li>TODO: картинка со стейт оф ЖС</li>
+      </ul>
     </section>
 
     <section class="slide">
-      <pre class="place">
-        <code>import express from 'express';</code>
-        <code>import { config } from './config';</code>
-        <code>import { routes } from './routes';</code>
-        <code>  </code>
-        <code>const app = express();</code>
-        <code>app.use(routes());</code>
-        <code>  </code>
-        <code>app.get('/', (req, res) => res.send('Hello, World!'));</code>
-        <code>app.listen(config.server.port, () => {</code>
-        <code>  console.log(`Server is running on port ${config.server.port}`);</code>
-        <code>});</code>
+      <pre class="place typescript">
+        <code>import express from 'express';
+import { config } from './config';
+import { routes } from './routes';
+
+const app = express();
+app.use(routes());
+
+app.get('/', (req, res) => res.send('Hello, World!'));
+app.listen(config.server.port, () => {
+  console.log(`Server is running on port ${config.server.port}`);
+});
+        </code>
       </pre>
     </section>
 
-    <section class="slide">
+    <!-- TODO: -->
+    <!-- <section class="slide">
       <h2>Пишем какую-то бизнес логику</h2>
       <p>Которая закрывает вашу задачу</p>
+    </section> -->
+
+    <section class="slide neck-bg1">
+      <h2 class="shout shout-e">Databases</h2>
+    </section>
+
+    <section class="slide neck-bg1">
+      <h2 class="shout shout-e">OS-level virtualization</h2>
     </section>
 
     <section class="slide">
-      <h2 class="shout" style="font-size: 2em">Контейнеризация</h2>
-    </section>
-
-    <section class="slide">
-      <h2>Контейнеризация (и оркестрация)</h2>
+      <h2>Контейнеризация</h2>
       <ul>
         <li>Docker</li>
         <li>Podman</li>
@@ -312,65 +324,77 @@
     </section>
 
     <section class="slide">
-      <pre class="place">
-        <code>  FROM node as builder</code>
-        <code>  WORKDIR /opt/app</code>
-        <code>  RUN npm ci && npm run build</code>
-        <code>  FROM nginx as runner</code>
-        <code>  COPY --from=builder /opt/app /opt/app</code>
-        <code>  EXPOSE 80</code>
-        <code>  CMD ["/usr/sbin/nginx", "-g", "daemon off;"]</code>
+      <pre class="place dockerfile">
+        <code>  FROM node as builder
+  WORKDIR /opt/app
+  RUN npm ci && npm run build
+  FROM nginx as runner
+  COPY --from=builder /opt/app /opt/app
+  EXPOSE 80
+  CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <pre class="place dockerfile">
+        <code data-highlighted="yes" class="hljs language-swift">
+          <span class="hljs-type">  FROM</span> node <span class="hljs-keyword">as</span> builder
+          <span class="hljs-type">  WORKDIR</span> <span class="hljs-regexp">/opt/</span>app
+          <span class="hljs-type">  RUN</span> npm ci <span class="hljs-operator">&amp;&amp;</span> npm run build
+          <span class="del"><span class="hljs-operator">- </span><span class="hljs-type">FROM</span> nginx <span class="hljs-keyword">as</span> runner</span>
+          <span class="add"><span class="hljs-operator">+ </span><span class="hljs-type">FROM</span> builder <span class="hljs-keyword">as</span> runner</span>
+          <span class="hljs-type">  COPY</span> <span class="hljs-operator">--</span>from<span class="hljs-operator">=</span>builder <span class="hljs-regexp">/opt/</span>app <span class="hljs-regexp">/opt/</span>app
+          <span class="hljs-type">  EXPOSE</span> <span class="hljs-number">80</span>
+          <span class="hljs-type">  CMD</span> [<span class="hljs-string">"/usr/sbin/nginx"</span>, <span class="hljs-string">"-g"</span>, <span class="hljs-string">"daemon off;"</span>]
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <pre class="place dockerfile">
+        <code data-highlighted="yes" class="hljs language-swift">
+          <span class="hljs-type">  FROM</span> node <span class="hljs-keyword">as</span> builder
+          <span class="hljs-type">  WORKDIR</span> <span class="hljs-regexp">/opt/</span>app
+          <span class="hljs-type">  RUN</span> npm ci <span class="hljs-operator">&amp;&amp;</span> npm run build
+          <span class="hljs-type">  FROM</span> builder <span class="hljs-keyword">as</span> runner
+          <span class="hljs-type">  COPY</span> <span class="hljs-operator">--</span>from<span class="hljs-operator">=</span>builder <span class="hljs-regexp">/opt/</span>app <span class="hljs-regexp">/opt/</span>app
+          <span class="del"><span class="hljs-operator">- </span><span class="hljs-type">EXPOSE</span> <span class="hljs-number">80</span></span>
+          <span class="add"><span class="hljs-operator">+ </span><span class="hljs-type">EXPOSE</span> <span class="hljs-number">3000</span></span>
+          <span class="hljs-type">  CMD</span> [<span class="hljs-string">"/usr/sbin/nginx"</span>, <span class="hljs-string">"-g"</span>, <span class="hljs-string">"daemon off;"</span>]
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <pre class="place dockerfile">
+        <code data-highlighted="yes" class="hljs language-swift">
+          <span class="hljs-type">  FROM</span> node <span class="hljs-keyword">as</span> builder
+          <span class="hljs-type">  WORKDIR</span> <span class="hljs-regexp">/opt/</span>app
+          <span class="hljs-type">  RUN</span> npm ci <span class="hljs-operator">&amp;&amp;</span> npm run build
+          <span class="hljs-type">  FROM</span> builder <span class="hljs-keyword">as</span> runner
+          <span class="hljs-type">  COPY</span> <span class="hljs-operator">--</span>from<span class="hljs-operator">=</span>builder <span class="hljs-regexp">/opt/</span>app <span class="hljs-regexp">/opt/</span>app
+          <span class="hljs-type">  EXPOSE</span> <span class="hljs-number">3000</span>
+          <span class="del"><span class="hljs-operator">- </span><span class="hljs-type">CMD</span> [<span class="hljs-string">"/usr/sbin/nginx"</span>, <span class="hljs-string">"-g"</span>, <span class="hljs-string">"daemon off;"</span>]</span>
+          <span class="add"><span class="hljs-operator">+ </span><span class="hljs-type">CMD</span> [<span class="hljs-string">"node"</span>, <span class="hljs-string">"dist/index.js"</span>]</span>
+        </code>
       </pre>
     </section>
 
     <section class="slide">
       <pre class="place">
-        <code>  FROM node as builder</code>
-        <code>  WORKDIR /opt/app</code>
-        <code>  RUN npm ci && npm run build</code>
-        <code class="del">- FROM nginx as runner</code>
-        <code class="add">+ FROM builder as runner</code>
-        <code>  COPY --from=builder /opt/app /opt/app</code>
-        <code>  EXPOSE 80</code>
-        <code>  CMD ["/usr/sbin/nginx", "-g", "daemon off;"]</code>
+        <code class="nohighlight">  FROM node as builder</code>
+        <code class="nohighlight">  WORKDIR /opt/app</code>
+        <code class="nohighlight">  RUN npm ci && npm run build</code>
+        <code class="nohighlight">  FROM builder as runner</code>
+        <code class="nohighlight">  COPY --from=builder /opt/app /opt/app</code>
+        <code class="nohighlight">  EXPOSE 3000</code>
+        <code class="nohighlight">  CMD ["node", "dist/index.js"]</code>
       </pre>
     </section>
 
-    <section class="slide">
-      <pre class="place">
-        <code>  FROM node as builder</code>
-        <code>  WORKDIR /opt/app</code>
-        <code>  RUN npm ci && npm run build</code>
-        <code class="del">- FROM nginx as runner</code>
-        <code class="add">+ FROM builder as runner</code>
-        <code>  COPY --from=builder /opt/app /opt/app</code>
-        <code class="del">- EXPOSE 80</code>
-        <code class="add">+ EXPOSE 3000</code>
-        <code>  CMD ["/usr/sbin/nginx", "-g", "daemon off;"]</code>
-      </pre>
-    </section>
-
-    <section class="slide">
-      <pre class="place">
-        <code>  FROM node as builder</code>
-        <code>  WORKDIR /opt/app</code>
-        <code>  RUN npm ci && npm run build</code>
-        <code class="del">- FROM nginx as runner</code>
-        <code class="add">+ FROM builder as runner</code>
-        <code>  COPY --from=builder /opt/app /opt/app</code>
-        <code class="del">- EXPOSE 80</code>
-        <code class="add">+ EXPOSE 3000</code>
-        <code class="del">- CMD ["/usr/sbin/nginx", "-g", "daemon off;"]</code>
-        <code class="add">+ CMD ["node", "dist/index.js"]</code>
-      </pre>
-    </section>
-
-    <section class="slide">
-      <h2 class="shout" style="font-size: 2em">Production?</h2>
-    </section>
-
-    <section class="slide">
-      <h2 class="shout" style="font-size: 2em">Probes</h2>
+    <section class="slide neck-bg1">
+      <h2 class="shout shout-e">Probes</h2>
     </section>
 
     <section class="slide">
@@ -399,26 +423,26 @@
     </section>
 
     <section class="slide">
-      <pre class="place">
-        <code>import express from 'express';</code>
-        <code>  </code>
-        <code>function probes(): Router {</code>
-        <code>  const router = Router();</code>
-        <code>  </code>
-        <code>  router.get('/healthz', (_req, res): void => {</code>
-        <code>    res.status(200).json({ msg: 'ok' });</code>
-        <code>  });</code>
-        <code>  </code>
-        <code>  router.get('/readiness', (_req, res): void => {</code>
-        <code>    res.status(200).json({ msg: 'ok' });</code>
-        <code>  });</code>
-        <code>  return router;</code>
-        <code>}</code>
+      <pre class="place ts">
+        <code>import express from 'express';
+
+function probes(): Router {
+  const router = Router();
+
+  router.get('/healthz', (_req, res): void => {
+    res.status(200).json({ msg: 'ok' });
+  });
+
+  router.get('/readiness', (_req, res): void => {
+    res.status(200).json({ msg: 'ok' });
+  });
+  return router;
+}</code>
       </pre>
     </section>
 
-    <section class="slide">
-      <h2 class="shout" style="font-size: 2em">Logs</h2>
+    <section class="slide neck-bg1">
+      <h2 class="shout shout-e">Logs</h2>
     </section>
 
     <section class="slide">
@@ -457,8 +481,8 @@
       <img class="cover h" src="assets/images/kibana.jpg" />
     </section>
 
-    <section class="slide">
-      <h2 class="shout" style="font-size: 2em">Metrics</h2>
+    <section class="slide neck-bg1">
+      <h2 class="shout shout-e">Metrics</h2>
     </section>
 
     <section class="slide">
@@ -521,8 +545,8 @@
       <img class="cover h" src="assets/images/v-metrics-gauge.jpg" />
     </section>
 
-    <section class="slide">
-      <h2 class="shout" style="font-size: 2em">Traces</h2>
+    <section class="slide neck-bg1">
+      <h2 class="shout shout-e">Traces</h2>
     </section>
 
     <section class="slide">
@@ -572,6 +596,10 @@
       <img class="cover h" src="assets/images/jaeger-monitor.jpg" />
     </section>
 
+    <section class="slide neck-bg1">
+      <h2 class="shout shout-e">Alerting</h2>
+    </section>
+
     <section class="slide">
       <h2>Alerting</h2>
       <ul>
@@ -581,36 +609,22 @@
       </ul>
     </section>
 
-    <section class="slide">
-      <h2>Framework</h2>
-      <ul>
-        <li>ExpressJS</li>
-        <li>Koa</li>
-        <li>NestJS</li>
-        <li>NextJS</li>
-        <li>TODO: картинка со стейт оф ЖС</li>
-      </ul>
-    </section>
+    <section class="slide neck-bg1">
+      <p class="spotlight place top right">
+        <h2  class="shout-e">Migration</h2>
+        <h2 class="shout-e">Versioning</h2>
+      </p>
 
-    <section class="slide">
-      <h2 class="shout" style="font-size: 2em">Работа с данными</h2>
-      <p>ORM</p>
-      <p>ODM</p>
-      <p>...</p>
-    </section>
-
-    <section class="slide">
-      <h2>Migration</h2>
-      <ul>
+      <!-- <ul>
         <li>Opt in ORM</li>
         <li>Plain SQL</li>
         <li>JS scripts for MongoDB</li>
         <li>scripts</li>
-      </ul>
+      </ul> -->
     </section>
 
-    <section class="slide">
-      <h2>Versioning</h2>
+    <section class="slide clear">
+      <img class="cover w" src="assets/images/cronicas/03.jpeg" />
     </section>
 
     <section
@@ -623,8 +637,8 @@
       <img class="cover h" src="assets/images/thats-all-folks.svg" />
     </section>
 
-    <section class="slide">
-      <h2>QA</h2>
+    <section class="slide clear">
+      <img class="cover h" class="" src="assets/images/link-qr-code.png" />
     </section>
 
     <footer class="badge">
@@ -634,5 +648,9 @@
     <div class="progress"></div>
 
     <script src="node_modules/@shower/core/dist/shower.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
   </body>
 </html>

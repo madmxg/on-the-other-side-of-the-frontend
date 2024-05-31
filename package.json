@@ -15,7 +15,8 @@
   "dependencies": {
     "@shower/cli": "^0.3.1",
     "@shower/core": "^3.3.0",
-    "@shower/ribbon": "^3.5.1"
+    "@shower/ribbon": "^3.5.1",
+    "highlight.js": "^11.9.0"
   },
   "devDependencies": {
     "prettier": "^3.2.5"

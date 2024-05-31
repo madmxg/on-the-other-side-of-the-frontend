@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>On the other side of the frontend</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="node_modules/@shower/ribbon/styles/styles.css" />
+    <link rel="stylesheet" href="node_modules/highlight.js/styles/github.min.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body class="shower list">
+    <header class="caption">
+      <h1>По ту сторону фронтенда</h1>
+      <p><a target="_blank" href="https://t.me/madmxg">Mikhail Garbuzov</a>, Jetty Cloud.</p>
+    </header>
+
+    <section class="slide">
+      <h2 class="shout" style="font-size: 3em">По ту сторону фронтенда</h2>
+    </section>
+
+    <section class="slide">
+      <p>Intro</p>
+      <h3 style="font-size: 2em; margin-block-end: 0px">Михаил Гарбузов</h3>
+      <span>Picture</span>
+      <ol>
+        <li>Software Engineer at JettyCloud</li>
+        <li>
+          MoscowJS Co-Organizer
+          <code class="comment" style="color: rgba(128, 128, 128, 0.4); background-color: initial">
+            Q9S-X29
+          </code>
+        </li>
+        <li>More than 10 Y expirience with JS dev</li>
+      </ol>
+    </section>
+
+    <section class="slide">
+      <h2 class="shout grow">🙋‍♀️&nbsp;🙋‍♂️</h2>
+      <!-- TODO: зал из эмоджи слушателей -->
+      <!-- <h2 class="shout grow">🙋‍♀️&nbsp;🙋‍♂️</h2> -->
+      <!-- <h2 class="shout grow">🙋‍♀️&nbsp;🙋‍♂️</h2> -->
+    </section>
+
+    <section class="slide">
+      <h2 class="shout shout-e">Мотивация</h2>
+    </section>
+
+    <section class="slide">
+      <h2 class="">Community</h2>
+      <ol>
+        <li>Ивенты</li>
+        <li class="next">Доклады</li>
+        <li class="next">NodeJS</li>
+      </ol>
+    </section>
+
+    <section class="slide">
+      <h2 class="">Развитие</h2>
+      <ol>
+        <li>Lead</li>
+        <li class="next">Fullstack</li>
+        <li class="next">Backend</li>
+        <li class="next">Software Engineer</li>
+      </ol>
+    </section>
+
+    <section class="slide">
+      <h2 class="shout shout-e">Я и так умею писать backend</h2>
+    </section>
+
+    <section class="slide">
+      <pre class="place typescript">
+        <code>const express = require('express')
+const app = express()
+
+const port = 3000
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+      </code>
+      </pre>
+    </section>
+
+    <!-- <section class="slide">
+      <pre class="place typescript">
+        <code>'use server'
+
+export async function greeting(subject: string) {
+  try {
+    return `Hello ${subject}`
+  } catch (error) {
+    throw new Error('Failed to greeting')
+  }
+}
+        </code>
+      </pre>
+    </section> -->
+
+    <section class="slide clear">
+      <img class="cover h" src="assets/images/use-server.jpg" />
+    </section>
+
+    <section class="slide clear">
+      <img class="cover h" src="assets/images/mjs-58-nextjs.jpg" />
+    </section>
+
+    <section class="slide">
+      <h2 class="">О чем доклад</h2>
+      <ol>
+        <li class="next">Упакуем ваше приложение</li>
+        <li class="next">Добавим инструментарий</li>
+        <li class="next">Подводные камни</li>
+      </ol>
+    </section>
+
+    <section class="slide">
+      <h2 class="shout shout-e">Как обычно вы видите бекэнд</h2>
+    </section>
+
+    <section class="slide clear">
+      <h3>GraphQL</h3>
+      <img class="cover h" src="assets/images/graphql.jpg" />
+    </section>
+
+    <section class="slide clear">
+      <h3>OpenAPI | Swagger</h3>
+      <img class="cover h" src="assets/images/swagger.jpg" />
+    </section>
+
+    <section class="slide clear">
+      <h3>SOAP</h3>
+      <img class="cover h" src="assets/images/soap.jpg" />
+    </section>
+
+    <section class="slide clear">
+      <img class="cover h" src="assets/images/mermaid.jpeg" />
+    </section>
+
+    <section class="slide clear">
+      <img class="cover h" src="assets/images/mermaid-fb.jpg" />
+    </section>
+
+    <section class="slide">
+      <p style="color: brown; font-size: 1.5em">500</p>
+      <p class="note" style="font-size: 1.5em">Internal Server Error</p>
+    </section>
+
+    <!-- <section class="slide">
+      <h2>BE - это скучно</h2>
+      <ol>
+        <li class="next">перекладываем JSON`ы</li>
+        <li class="next">копипастип 100500 CRUD</li>
+        <li class="next">... ?</li>
+        <li class="next">PROFIT</li>
+      </ol>
+    </section>
+
+    <section class="slide">
+      <h2>FE - это скучно</h2>
+      <ol>
+        <li class="next">шлепаем формы</li>
+        <li class="next">красим/двигаем кнопки</li>
+        <li class="next">выбираем стейт менеджмент</li>
+        <li class="next">страдаем при написании редьюсеров для Redux</li>
+      </ol>
+    </section>
+
+    <section class="slide">
+      <h2>{{ Placeholder }} - это скучно</h2>
+      <ol>
+        <li>[QA] ничего не делают</li>
+        <li>[DevOps] yaml developer</li>
+      </ol>
+    </section> -->
+
+    <section class="slide">
+      <h2>As Crônicas de Wesley</h2>
+      <p>IMG // TODO: find original picture</p>
+      <p></p>
+    </section>
+
+    <!-- <section
+      class="slide clear"
+      style="
+        background-color: #0b71b1;
+        background: linear-gradient(
+          0deg,
+          rgba(2, 0, 36, 1) 0%,
+          rgba(9, 9, 121, 1) 35%,
+          rgba(0, 212, 255, 1) 100%
+        );
+      "
+    >
+      <img class="cover h" src="assets/images/iceberg.jpeg" />
+    </section> -->
+
+    <section class="slide clear">
+      <img class="cover w" src="assets/images/cronicas/02-lets.jpeg" />
+    </section>
+
+    <section class="slide">
+      <h2>или напишем приложение</h2>
+      <p>https://nodejs.org/docs</p>
+      <p>https://expressjs.com</p>
+    </section>
+
+    <section class="slide">
+      <h2>Requirements</h2>
+      <ol>
+        <li class="next">npm</li>
+        <li class="next">Express</li>
+        <li class="next">Jest</li>
+        <li class="next">Javascript</li>
+      </ol>
+    </section>
+
+    <section class="slide">
+      <h2>Requirements</h2>
+      <ol>
+        <li>npm</li>
+        <li>Express</li>
+        <li>Jest</li>
+        <li>
+          <del>Javascript</del>
+          Typescript
+        </li>
+      </ol>
+    </section>
+
+    <!-- <section
+      class="slide clear"
+      style="
+        background: rgb(172, 35, 51);
+        background: radial-gradient(circle, rgba(172, 35, 51, 1) 0%, rgba(40, 2, 5, 1) 100%);
+      "
+    >
+      <img class="cover h" src="assets/images/thats-all-folks.svg" />
+    </section> -->
+
+    <section class="slide neck-bg1">
+      <h2 class="shout shout-e" style="font-size: 2em">Старт проекта</h2>
+    </section>
+
+    <section class="slide">
+      <pre class="place bash">
+        <code>npm init --yes</code>
+        <code>npm install express {lodash,ramda,fp-ts}</code>
+      </pre>
+    </section>
+
+    <section class="slide neck-bg1">
+      <h2 class="shout shout-e">Dev зависимости</h2>
+    </section>
+
+    <section class="slide">
+      <pre class="place bash">
+        <code>npm install --save-dev \
+  eslint prettier husky lint-staged \
+  jest \
+  typescript \
+  @types/node \
+  @tsconfig/node20
+      </code>
+      </pre>
+    </section>
+
+    <section class="slide neck-bg1">
+      <h2 class="shout shout-e">Framework</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Framework</h2>
+      <ul>
+        <li>ExpressJS</li>
+        <li>Koa</li>
+        <li>NestJS</li>
+        <li>NextJS</li>
+        <li>TODO: картинка со стейт оф ЖС</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <pre class="place typescript">
+        <code>import express from 'express';
+import { config } from './config';
+import { routes } from './routes';
+
+const app = express();
+app.use(routes());
+
+app.get('/', (req, res) => res.send('Hello, World!'));
+app.listen(config.server.port, () => {
+  console.log(`Server is running on port ${config.server.port}`);
+});
+        </code>
+      </pre>
+    </section>
+
+    <!-- TODO: -->
+    <!-- <section class="slide">
+      <h2>Пишем какую-то бизнес логику</h2>
+      <p>Которая закрывает вашу задачу</p>
+    </section> -->
+
+    <section class="slide neck-bg1">
+      <h2 class="shout shout-e">Databases</h2>
+    </section>
+
+    <section class="slide neck-bg1">
+      <h2 class="shout shout-e">OS-level virtualization</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Контейнеризация</h2>
+      <ul>
+        <li>Docker</li>
+        <li>Podman</li>
+        <li></li>
+        <li>k8s</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <pre class="place dockerfile">
+        <code>  FROM node as builder
+  WORKDIR /opt/app
+  RUN npm ci && npm run build
+  FROM nginx as runner
+  COPY --from=builder /opt/app /opt/app
+  EXPOSE 80
+  CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <pre class="place dockerfile">
+        <code data-highlighted="yes" class="hljs language-swift">
+          <span class="hljs-type">  FROM</span> node <span class="hljs-keyword">as</span> builder
+          <span class="hljs-type">  WORKDIR</span> <span class="hljs-regexp">/opt/</span>app
+          <span class="hljs-type">  RUN</span> npm ci <span class="hljs-operator">&amp;&amp;</span> npm run build
+          <span class="del"><span class="hljs-operator">- </span><span class="hljs-type">FROM</span> nginx <span class="hljs-keyword">as</span> runner</span>
+          <span class="add"><span class="hljs-operator">+ </span><span class="hljs-type">FROM</span> builder <span class="hljs-keyword">as</span> runner</span>
+          <span class="hljs-type">  COPY</span> <span class="hljs-operator">--</span>from<span class="hljs-operator">=</span>builder <span class="hljs-regexp">/opt/</span>app <span class="hljs-regexp">/opt/</span>app
+          <span class="hljs-type">  EXPOSE</span> <span class="hljs-number">80</span>
+          <span class="hljs-type">  CMD</span> [<span class="hljs-string">"/usr/sbin/nginx"</span>, <span class="hljs-string">"-g"</span>, <span class="hljs-string">"daemon off;"</span>]
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <pre class="place dockerfile">
+        <code data-highlighted="yes" class="hljs language-swift">
+          <span class="hljs-type">  FROM</span> node <span class="hljs-keyword">as</span> builder
+          <span class="hljs-type">  WORKDIR</span> <span class="hljs-regexp">/opt/</span>app
+          <span class="hljs-type">  RUN</span> npm ci <span class="hljs-operator">&amp;&amp;</span> npm run build
+          <span class="hljs-type">  FROM</span> builder <span class="hljs-keyword">as</span> runner
+          <span class="hljs-type">  COPY</span> <span class="hljs-operator">--</span>from<span class="hljs-operator">=</span>builder <span class="hljs-regexp">/opt/</span>app <span class="hljs-regexp">/opt/</span>app
+          <span class="del"><span class="hljs-operator">- </span><span class="hljs-type">EXPOSE</span> <span class="hljs-number">80</span></span>
+          <span class="add"><span class="hljs-operator">+ </span><span class="hljs-type">EXPOSE</span> <span class="hljs-number">3000</span></span>
+          <span class="hljs-type">  CMD</span> [<span class="hljs-string">"/usr/sbin/nginx"</span>, <span class="hljs-string">"-g"</span>, <span class="hljs-string">"daemon off;"</span>]
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <pre class="place dockerfile">
+        <code data-highlighted="yes" class="hljs language-swift">
+          <span class="hljs-type">  FROM</span> node <span class="hljs-keyword">as</span> builder
+          <span class="hljs-type">  WORKDIR</span> <span class="hljs-regexp">/opt/</span>app
+          <span class="hljs-type">  RUN</span> npm ci <span class="hljs-operator">&amp;&amp;</span> npm run build
+          <span class="hljs-type">  FROM</span> builder <span class="hljs-keyword">as</span> runner
+          <span class="hljs-type">  COPY</span> <span class="hljs-operator">--</span>from<span class="hljs-operator">=</span>builder <span class="hljs-regexp">/opt/</span>app <span class="hljs-regexp">/opt/</span>app
+          <span class="hljs-type">  EXPOSE</span> <span class="hljs-number">3000</span>
+          <span class="del"><span class="hljs-operator">- </span><span class="hljs-type">CMD</span> [<span class="hljs-string">"/usr/sbin/nginx"</span>, <span class="hljs-string">"-g"</span>, <span class="hljs-string">"daemon off;"</span>]</span>
+          <span class="add"><span class="hljs-operator">+ </span><span class="hljs-type">CMD</span> [<span class="hljs-string">"node"</span>, <span class="hljs-string">"dist/index.js"</span>]</span>
+        </code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <pre class="place">
+        <code class="nohighlight">  FROM node as builder</code>
+        <code class="nohighlight">  WORKDIR /opt/app</code>
+        <code class="nohighlight">  RUN npm ci && npm run build</code>
+        <code class="nohighlight">  FROM builder as runner</code>
+        <code class="nohighlight">  COPY --from=builder /opt/app /opt/app</code>
+        <code class="nohighlight">  EXPOSE 3000</code>
+        <code class="nohighlight">  CMD ["node", "dist/index.js"]</code>
+      </pre>
+    </section>
+
+    <section class="slide neck-bg1">
+      <h2 class="shout shout-e">Probes</h2>
+    </section>
+
+    <section class="slide">
+      <p>Liveness / Readiness / Startup</p>
+      <p>
+        Docker
+        <br />
+        <span>
+          <a
+            target="_blank"
+            href="https://docs.docker.com/compose/compose-file/05-services/#healthcheck"
+            >https://docs.docker.com/compose/compose-file/05-services/#healthcheck</a
+          >
+        </span>
+      </p>
+
+      <p>
+        k8s
+        <br />
+        <a
+          target="_blank"
+          href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/"
+          >https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/</a
+        >
+      </p>
+    </section>
+
+    <section class="slide">
+      <pre class="place ts">
+        <code>import express from 'express';
+
+function probes(): Router {
+  const router = Router();
+
+  router.get('/healthz', (_req, res): void => {
+    res.status(200).json({ msg: 'ok' });
+  });
+
+  router.get('/readiness', (_req, res): void => {
+    res.status(200).json({ msg: 'ok' });
+  });
+  return router;
+}</code>
+      </pre>
+    </section>
+
+    <section class="slide neck-bg1">
+      <h2 class="shout shout-e">Logs</h2>
+    </section>
+
+    <section class="slide">
+      <ul class="place">
+        <li>ELK</li>
+        <li>Splunk</li>
+        <li>Datadog</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <pre class="place">
+        <code>npm install winston</code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <pre class="place">
+        <code>import winston from 'winston';</code>
+        <code>import { config } from './config';</code>
+        <code>  </code>
+        <code>const { levels, colors } = winston.config.npm;</code>
+        <code>winston.addColors(colors);</code>
+        <code>  </code>
+        <code>export const logger = winston.createLogger({</code>
+        <code>  levels,</code>
+        <code>  level: config.server.logLevel,</code>
+        <code>  format: winston.format.combine(winston.format.timestamp(), winston.format.json()),</code>
+        <code>  defaultMeta: { service: 'app-backend' },</code>
+        <code>  transports: [new winston.transports.Console()],</code>
+        <code>});</code>
+      </pre>
+    </section>
+
+    <section class="slide clear">
+      <img class="cover h" src="assets/images/kibana.jpg" />
+    </section>
+
+    <section class="slide neck-bg1">
+      <h2 class="shout shout-e">Metrics</h2>
+    </section>
+
+    <section class="slide">
+      <ul class="place">
+        <li>Prometheus</li>
+        <li>VictoriaMetrics</li>
+        <li>Grafana</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <pre class="place">
+        <code>npm install express-prom-bundle prom-client</code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <pre class="place">
+        <code>import winston from 'winston';</code>
+        <code>import promBundle from 'express-prom-bundle';</code>
+        <code>import { collectDefaultMetrics } from 'prom-client';</code>
+        <code>  </code>
+        <code>...</code>
+        <code>  </code>
+        <code>const metricsMiddleware = promBundle({ includeMethod: true });</code>
+        <code>collectDefaultMetrics();</code>
+        <code>  </code>
+        <code>app.use(metricsMiddleware);</code>
+        <code>  </code>
+        <code>...</code>
+      </pre>
+    </section>
+
+    <section class="slide clear">
+      <img class="cover h" src="assets/images/grafana.png" />
+    </section>
+
+    <section class="slide">
+      <pre class="place">
+        <code>import { Gauge } from 'prom-client';</code>
+        <code>  </code>
+        <code>const statusGauge = new Gauge({ name: 'tjs_app_hits_counter' });</code>
+        <code>  </code>
+        <code>function counter(): Router {</code>
+        <code>  const router = Router();</code>
+        <code>  router.get('/increment', (_req, res): void => {</code>
+        <code>    statusGauge.inc();</code>
+        <code>    res.status(200).send();</code>
+        <code>  });</code>
+        <code>  router.get('/decrement', (_req, res): void => {</code>
+        <code>    statusGauge.dec();</code>
+        <code>    res.status(200).send();</code>
+        <code>  });</code>
+        <code>  return router;</code>
+        <code>}</code>
+      </pre>
+    </section>
+
+    <section class="slide clear">
+      <img class="cover h" src="assets/images/v-metrics-gauge.jpg" />
+    </section>
+
+    <section class="slide neck-bg1">
+      <h2 class="shout shout-e">Traces</h2>
+    </section>
+
+    <section class="slide">
+      <ul class="place">
+        <li>Dynatrace</li>
+        <li>Jaeger</li>
+        <li>Zipkin</li>
+        <li>OpenTelemetry</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <pre class="place">
+        <code>npm install @opentelemetry/api @opentelemetry/sdk-node \</code>
+        <code>  @opentelemetry/auto-instrumentations-node \</code>
+        <code>  @opentelemetry/exporter-trace-otlp-grpc \</code>
+        <code>  @opentelemetry/sdk-trace-node \</code>
+        <code>  @opentelemetry/sdk-metrics</code>
+      </pre>
+    </section>
+
+    <section class="slide">
+      <pre class="place">
+        <code>import { NodeSDK } from '@opentelemetry/sdk-node';</code>
+        <code>...</code>
+        <code>// WIP</code>
+      </pre>
+    </section>
+
+    <section class="slide clear">
+      <img class="cover h" src="assets/images/jaeger-search.jpg" />
+    </section>
+
+    <section class="slide clear">
+      <img class="cover h" src="assets/images/jaeger-search-id.jpg" />
+    </section>
+
+    <section class="slide clear">
+      <img class="cover h" src="assets/images/jaeger-dag.jpg" />
+    </section>
+
+    <section class="slide clear">
+      <img class="cover h" src="assets/images/jaeger-fdg.jpg" />
+    </section>
+
+    <section class="slide clear">
+      <img class="cover h" src="assets/images/jaeger-monitor.jpg" />
+    </section>
+
+    <section class="slide neck-bg1">
+      <h2 class="shout shout-e">Alerting</h2>
+    </section>
+
+    <section class="slide">
+      <h2>Alerting</h2>
+      <ul>
+        <li>Opsgenie</li>
+        <li>PagerDuty</li>
+        <li>Grafana OnCall</li>
+      </ul>
+    </section>
+
+    <section class="slide neck-bg1">
+      <p class="spotlight place top right">
+        <h2  class="shout-e">Migration</h2>
+        <h2 class="shout-e">Versioning</h2>
+      </p>
+
+      <!-- <ul>
+        <li>Opt in ORM</li>
+        <li>Plain SQL</li>
+        <li>JS scripts for MongoDB</li>
+        <li>scripts</li>
+      </ul> -->
+    </section>
+
+    <section class="slide clear">
+      <img class="cover w" src="assets/images/cronicas/03.jpeg" />
+    </section>
+
+    <section
+      class="slide clear"
+      style="
+        background: rgb(172, 35, 51);
+        background: radial-gradient(circle, rgba(172, 35, 51, 1) 0%, rgba(40, 2, 5, 1) 100%);
+      "
+    >
+      <img class="cover h" src="assets/images/thats-all-folks.svg" />
+    </section>
+
+    <section class="slide clear">
+      <img class="cover h" class="" src="assets/images/link-qr-code.png" />
+    </section>
+
+    <footer class="badge">
+      <a href="https://github.com/shower/shower">Fork me on GitHub</a>
+    </footer>
+
+    <div class="progress"></div>
+
+    <script src="shower/shower.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+  </body>
+</html>

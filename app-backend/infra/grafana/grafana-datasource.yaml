@@ -1,0 +1,16 @@
+apiVersion: 1
+datasources:
+  - name: VictoriaMetrics TJS metrics
+    type: victoriametrics-datasource
+    access: proxy
+    orgId: 1
+    url: http://host.docker.internal:8428/
+    isDefault: true
+# apiVersion: 1
+# datasources:
+#   - name: Prometheus TJS metrics
+#     type: Prometheus
+#     access: proxy
+#     orgId: 1
+#     url: http://host.docker.internal:8428/
+#     isDefault: true

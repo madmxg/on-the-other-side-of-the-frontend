@@ -2,7 +2,7 @@
   --slide-ratio: calc(16 / 9);
 }
 .slide pre {
-  font-size: 20px;
+  font-size: 18px;
 }
 .slide pre code.add {
   background-color: rgba(0, 128, 0, 0.1);
@@ -12,19 +12,34 @@
   background-color: rgba(255, 0, 0, 0.1);
   color: red;
 }
-.slide .place.dockerfile span.del {
-  background-color: rgba(255, 0, 0, 0.1);
-  padding: 5px;
-  padding-left: initial;
-}
-.slide .place.dockerfile span.add {
-  background-color: rgba(0, 128, 0, 0.1);
-  padding: 5px;
-  padding-left: initial;
-}
-
 .slide .shout.shout-e {
   font-size: 2.2em;
+}
+.slide.intro {
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.slide.intro > img {
+  height: auto;
+  width: 55%;
+}
+
+.slide.intro > div {
+  padding-right: 2em;
+}
+
+.slide > h3.bottom-bg {
+  background-color: #376da3;
+  color: #fff;
+  padding: 0.5em 1em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.slide.carbon {
+  background-color: #acb8c3;
 }
 
 .slide.neck-bg1 {
